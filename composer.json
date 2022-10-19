@@ -1,0 +1,22 @@
+{
+    "name": "loov/php-sdk",
+    "description": "Online payment solution",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Youssouf Junior",
+            "email": "",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Loov\\PhpSdk\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
