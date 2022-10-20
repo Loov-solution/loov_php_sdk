@@ -1,5 +1,6 @@
 <?php
 
+namespace Loov\PhpSdk;
 
 class LoovPay{
     const BASEURL  ='https://api.loov-solutions.com/api/';
