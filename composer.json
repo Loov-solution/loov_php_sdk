@@ -14,9 +14,7 @@
         "php": ">=5.4.1"
     },
     "autoload": {
-        "psr-4": {
-            "Loov\\PhpSdk\\": "src/"
-        }
+        "psr-4":{"Src\\": "./src"}
     },
     "minimum-stability": "dev"
 }

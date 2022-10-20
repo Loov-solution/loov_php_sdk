@@ -1,13 +1,13 @@
 <?php
 
-namespace Loov\PhpSdk;
+namespace Src;
+const BASEURL  ='https://api.loov-solutions.com/api/';
+const ACCEPT = 'application/x-www-form-urlencoded';
+const CONTENT_TYPE = 'application/json';
+const COOKIE = "XSRF-TOKEN=eyJpdiI6InR4ZXJVM0tBZmlveDM3VkNPeTNXM0E9PSIsInZhbHVlIjoibWNTTndlS3J5dU5QTnpsNDVENWZJdklvOWx4bk5Od3FIVXZyVEkzdmlDS2V0T04veUdST3FTU053em0yOXZ3OG1ja1N1MzdqYzBzUndrOGc1NHBvVVdwOXhwMWNxOHBvVG45VmMzNXE3MzFUaGRsNncydDVya3VpTzhmWmVNU2kiLCJtYWMiOiIyNDcwY2IwZmM0MzJkNzc0OGVlNGYyM2E4NmYwMTBhODViMWU3N2YzNWZmZjY5OTk2ZWRiMmE0MTQxMzBjOTAyIiwidGFnIjoiIn0%3D; loov_solutions_session=eyJpdiI6ImhxTWZpYmc5S25nY2dvRWpnSVhhMUE9PSIsInZhbHVlIjoiV0FjS1pxR1lOcXBCc2FWWmFPcjgvWnJTMkZwYmZNanNldzJhTVppUTlQTzlTazJYV1pVVm4zeW1tMFZNL2tUWnczQ2dQcWEvamtyM2ZITlFaT0llNnQ1S2FEV29leGZhaVcyTHl4c0VIcU5MSUlLa2MrcDhOZzI3V0pTTUtseDgiLCJtYWMiOiI2NDE5NTNkZTNhZDFlMTNkODg1YjYzZTQwN2U1NjMzNTk1N2ZhODNiNmZjODZlMjkzNGE4MjA5NjVmYmI5YjM1IiwidGFnIjoiIn0%3D";
+
 
 class LoovPay{
-    const BASEURL  ='https://api.loov-solutions.com/api/';
-    const ACCEPT = 'application/x-www-form-urlencoded';
-    const CONTENT_TYPE = 'application/json';
-    const COOKIE = "XSRF-TOKEN=eyJpdiI6InR4ZXJVM0tBZmlveDM3VkNPeTNXM0E9PSIsInZhbHVlIjoibWNTTndlS3J5dU5QTnpsNDVENWZJdklvOWx4bk5Od3FIVXZyVEkzdmlDS2V0T04veUdST3FTU053em0yOXZ3OG1ja1N1MzdqYzBzUndrOGc1NHBvVVdwOXhwMWNxOHBvVG45VmMzNXE3MzFUaGRsNncydDVya3VpTzhmWmVNU2kiLCJtYWMiOiIyNDcwY2IwZmM0MzJkNzc0OGVlNGYyM2E4NmYwMTBhODViMWU3N2YzNWZmZjY5OTk2ZWRiMmE0MTQxMzBjOTAyIiwidGFnIjoiIn0%3D; loov_solutions_session=eyJpdiI6ImhxTWZpYmc5S25nY2dvRWpnSVhhMUE9PSIsInZhbHVlIjoiV0FjS1pxR1lOcXBCc2FWWmFPcjgvWnJTMkZwYmZNanNldzJhTVppUTlQTzlTazJYV1pVVm4zeW1tMFZNL2tUWnczQ2dQcWEvamtyM2ZITlFaT0llNnQ1S2FEV29leGZhaVcyTHl4c0VIcU5MSUlLa2MrcDhOZzI3V0pTTUtseDgiLCJtYWMiOiI2NDE5NTNkZTNhZDFlMTNkODg1YjYzZTQwN2U1NjMzNTk1N2ZhODNiNmZjODZlMjkzNGE4MjA5NjVmYmI5YjM1IiwidGFnIjoiIn0%3D";
-
     public $amount=0;
     public $sender_curency='';
     public $return_url='';
@@ -44,10 +44,10 @@ class LoovPay{
                 CURLOPT_POSTFIELDS => $array,
                 CURLOPT_HTTPHEADER =>$this->header
             ));
-            $response = curl_exec($this-curl);
-            curl_close($this-curl);
+            $response = curl_exec($this->curl);
+            curl_close($this->curl);
             return $response;
-        }catch(InvalidLoovPayexception $exception){
+        }catch(exception $exception){
             return $exception;
         }
 
@@ -62,10 +62,10 @@ class LoovPay{
                 CURLOPT_CUSTOMREQUEST => 'GET',
                 CURLOPT_HTTPHEADER =>$this->header
             ));
-            $response = curl_exec($this-curl);
-            curl_close($this-curl);
+            $response = curl_exec($this->curl);
+            curl_close($this->curl);
             return $response;
-        }catch(InvalidLoovPayexception $exception){
+        }catch(exception $exception){
             return $exception;
         }
     }
