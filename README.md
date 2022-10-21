@@ -42,6 +42,11 @@ composer require loov/php-sdk
        <td>yes</td>
     </tr>
     <tr>
+       <td>notify_url</td>
+       <td>string</td>
+       <td>no</td>
+    </tr>
+    <tr>
        <td>cancel_url</td>
        <td>string</td>
        <td>yes</td>
@@ -76,8 +81,10 @@ class payment extends Controller
 
         $data = array(
             'amount' => 2000,
+            'sender_currency' => '',
             'return_url' => '',
             'cancel_url' => '',
+            'notify_url' => '',
         );
 
         $this->objet()->initPayment($data);
