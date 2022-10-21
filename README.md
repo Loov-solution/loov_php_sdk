@@ -23,6 +23,95 @@ Run this in your terminal to install Shopper from command line:
 ``` bash
 composer require loov/php-sdk
 ```
+## Requirement
+
+<table>
+    <tr>
+        <th>Varibale name</th>
+        <th>Type</th>
+        <th>Required</th>
+    </tr>
+    <tr>
+        <td>amount</td>
+        <td>number</td>
+        <td>yes</td>
+    </tr>
+    <tr>
+       <td>return_url</td>
+       <td>string</td>
+       <td>yes</td>
+    </tr>
+    <tr>
+       <td>cancel_url</td>
+       <td>string</td>
+       <td>yes</td>
+    </tr>
+    <tr>
+       <td>APP-KEY</td>
+       <td>string</td>
+       <td>yes</td>
+    </tr>
+    <tr>
+       <td>MERCHANT-KEY</td>
+       <td>string</td>
+       <td>yes</td>
+    </tr>
+</table>
+
+## Make a payment
+```
+<?php
+namespace App\Http\Controllers;
+use Loov\PhpSdk\LoovPay;
+
+class payment extends Controller
+{
+    public function objet()
+    {
+        return new LoovPay('APP_KEY', 'MERCHANT_KEY');
+    }
+
+    public function index()
+    {
+
+        $data = array(
+            'amount' => 2000,
+            'return_url' => '',
+            'cancel_url' => '',
+        );
+
+        $this->objet()->initPayment($data);
+    }
+
+    public function testPayment()
+    {
+        $this->objet()->checkStatus('loov-4OWDBDjcbV');
+    }
+}
+
+```
+
+## Check transaction status
+```
+<?php
+namespace App\Http\Controllers;
+use Loov\PhpSdk\LoovPay;
+
+class payment extends Controller
+{
+    public function objet()
+    {
+        return new LoovPay('APP_KEY', 'MERCHANT_KEY');
+    }
+
+    public function testPayment()
+    {
+        $this->objet()->checkStatus('reference');
+    }
+}
+
+
+```
 
 ## License
 
