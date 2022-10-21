@@ -2,6 +2,7 @@
 #
 /vendor
 composer.phar
+composer.lock
 
 # IntelliJ/PhpStorm
 #
