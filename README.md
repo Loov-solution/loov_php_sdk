@@ -26,7 +26,7 @@ composer require loov/php-sdk
 
 ## License
 
-The Shopper Framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The Loov Solutions PHP SDK is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 ## Security
 
