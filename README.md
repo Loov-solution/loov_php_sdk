@@ -36,6 +36,11 @@ composer require loov/php-sdk
         <td>number</td>
         <td>yes</td>
     </tr>
+     <tr>
+        <td>sender_currency</td>
+        <td>string</td>
+        <td>yes</td>
+    </tr>
     <tr>
        <td>return_url</td>
        <td>string</td>
@@ -71,23 +76,18 @@ use Loov\PhpSdk\LoovPay;
 
 class payment extends Controller
 {
-    public function objet()
-    {
-        return new LoovPay('APP_KEY', 'MERCHANT_KEY');
-    }
-
     public function index()
     {
 
         $data = array(
             'amount' => 2000,
-            'sender_currency' => '',
+            'sender_currency' => 'XAF',
             'return_url' => '',
             'cancel_url' => '',
             'notify_url' => '',
         );
 
-        $this->objet()->initPayment($data);
+         $res = (new LoovPay())->setKeys(app-key, merchant-key)->initPayment($data);
     }
 
     public function testPayment()
@@ -106,14 +106,9 @@ use Loov\PhpSdk\LoovPay;
 
 class payment extends Controller
 {
-    public function objet()
-    {
-        return new LoovPay('APP_KEY', 'MERCHANT_KEY');
-    }
-
     public function testPayment()
     {
-        $this->objet()->checkStatus('reference');
+        $res = (new LoovPay())->setKeys(app-key, merchant-key)->checkStatus('reference');
     }
 }
 
