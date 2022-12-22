@@ -1,2 +1,18 @@
-.idea
-/vendor/
+# Composer
+#
+/vendor
+composer.phar
+composer.lock
+
+# IntelliJ/PhpStorm
+#
+/.idea
+
+# Visual Studio Code
+#
+/.vscode
+
+# OSX
+#
+.DS_Store
+Thumbs.db

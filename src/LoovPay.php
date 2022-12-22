@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\Http;
 class LoovPay {
 
     const BASEURL  ='https://api.loov-solutions.com/api/';
-    const ACCEPT = 'application/json';
-    const CONTENT_TYPE = 'application/json';
 
     public $header = [];
     public $curl;
@@ -22,8 +20,8 @@ class LoovPay {
 
     public function setKeys(string $app_key, string $merchant_key){
         $this->header = array(
-            'Accept' => self::ACCEPT,
-            'Content-Type' => self::CONTENT_TYPE,
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json',
             'merchant-key' => $merchant_key,
             'app-key' => $app_key
         );
@@ -48,7 +46,7 @@ class LoovPay {
 
         if(!array_key_exists('cancel_url', $array)) throw new Exception("Error: cancel url not define");
 
-        $response = Http::withHeaders($this->header)->post(self::BASEURL.'payments/generate', $array);
+        $response = Http::withHeaders($this->header)->post('https://api.loov-solutions.com/api/payments/generate', $array);
 
         return json_decode($response->body());
 
@@ -59,7 +57,7 @@ class LoovPay {
      */
     public function checkStatus(string $reference)
     {
-        $response = Http::withHeaders($this->header)->get( self::BASEURL.'payments/status/'.$reference);
+        $response = Http::withHeaders($this->header)->get('https://api.loov-solutions.com/api/payments/status/'.$reference);
 
         return json_decode($response->body());
 
