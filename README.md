@@ -79,20 +79,16 @@ class payment extends Controller
     public function index()
     {
 
-        $data = array(
+         $data = [
             'amount' => 2000,
             'sender_currency' => 'XAF',
-            'return_url' => '',
-            'cancel_url' => '',
-            'notify_url' => '',
-        );
+            'return_url' => 'https://cosna-afrique.com',
+            'cancel_url' => 'https://cosna-afrique.com',
+            'notify_url' => 'https://cosna-afrique.com',
+        ];
 
-         $res = (new LoovPay())->setKeys(app-key, merchant-key)->initPayment($data);
-    }
-
-    public function testPayment()
-    {
-        $this->objet()->checkStatus('loov-4OWDBDjcbV');
+        $res = (new LoovPay())->setKeys('de2319fa-4fdf-4b00-b978-e9c9d9347f0b', 'e8fc3198-af18-478a-8c20-e8735e0e1021')->initPayment($data);
+        return [$res];
     }
 }
 
@@ -108,7 +104,7 @@ class payment extends Controller
 {
     public function testPayment()
     {
-        $res = (new LoovPay())->setKeys(app-key, merchant-key)->checkStatus('reference');
+         $this->objet()->checkStatus('loov-4OWDBDjcbV');
     }
 }
 
